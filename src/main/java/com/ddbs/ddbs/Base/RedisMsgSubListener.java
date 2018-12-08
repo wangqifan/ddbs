@@ -1,5 +1,8 @@
 package com.ddbs.ddbs.Base;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.ddbs.ddbs.Model.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisPubSub;
 import com.ddbs.ddbs.DAO.customerDAO;
@@ -11,6 +14,9 @@ public class RedisMsgSubListener extends JedisPubSub {
     // 取得订阅的消息后的处理
     public void onMessage(String channel, String message) {
         System.out.println(channel + "=" + message);
+        JSONObject jsonObject = JSON.parseObject(message);
+        customer customer= JSON.toJavaObject(jsonObject,customer.class);
+        customerDAO.Addcustomer(customer);
     }
 
     // 初始化订阅时候的处理

@@ -9,20 +9,17 @@ public class Ansy implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Thread thread = new Thread(new Runnable() {
+       Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true)
-                {
+                while (true) {
                     try {
-                        Thread.sleep(10000);
+                        Thread.sleep(1000);
+                    } catch (Exception x) {
                     }
-                    catch (Exception x)
-                    {}
-                    redisUtils util=new redisUtils();
+                    redisUtils util = new redisUtils();
                     RedisMsgSubListener pubsub = new RedisMsgSubListener();
                     util.subscribeMsg(pubsub, "test");
-                    System.out.println("#################");
                 }
             }
         });
