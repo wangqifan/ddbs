@@ -9,6 +9,6 @@ public class goods {
     public String name;
     public double price;
     public int providerid;
-    public Date saletime;
+   // public Date saletime;
     public String barcode;
 }

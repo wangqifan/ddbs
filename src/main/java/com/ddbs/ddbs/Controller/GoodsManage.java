@@ -31,7 +31,7 @@ public class GoodsManage {
         g.name=name;
         g.price= Double.valueOf(price);
         g.providerid=Integer.parseInt(price);
-        g.saletime= new Date();
+      //  g.saletime= new Date();
 
         int val=GOODSDAO.AddGoods(g);
         if(val==1)
